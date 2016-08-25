@@ -52,5 +52,17 @@ angular.module('starter.controllers', [])
   ];
 })
 
+.controller('LoginCtrl',function($scope){
+  //ปรพกาศตัวแปรเป็น obj เอาไว้ใส่ค่า user
+  $scope.user = { username: '', password : ''};
+  // ฟังก์ชั่นรับตัวแปรจาก form
+  $scope.doLogin = function(form) {
+    //ถ้าส่งข้อมูลมาครบ
+    if(form.$valid) {
+      console.log('Sign-In', $scope.user.username);
+    }
+  };
+})
+
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });

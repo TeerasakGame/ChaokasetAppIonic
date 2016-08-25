@@ -51,3 +51,16 @@ label.item.valid-lr {
   padding: 2px 0 2px 16px;
   color: red;
 }
+
+.login-background {
+  /*  background-image: url('/img/chaokaset_logo.png');
+    width: 100%;*/
+    background:url('../img/rice.jpg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            background-size: cover;
+}
+
+.login {
+  margin-top: 50px;
+}
