@@ -47,14 +47,11 @@ angular.module('starter', ['ionic', 'starter.controllers','ngMessages'])
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
-      }
-    })
+  .state('register', {
+      url: '/register',
+      templateUrl: 'templates/register.html'
+  })
+  
     .state('app.playlists', {
       url: '/playlists',
       views: {

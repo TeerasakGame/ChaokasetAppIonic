@@ -64,3 +64,16 @@ label.item.valid-lr {
 .login {
   margin-top: 50px;
 }
+.pic-profile-container {
+  width: 100%;
+  height:190px;
+  background-image: url("../img/rice.jpg");
+  background-size: cover;
+}
+.pic-profile {
+  margin-top: 60px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 0px 3px rgba(213,212,212,0.3);
+}
