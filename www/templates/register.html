@@ -33,11 +33,20 @@
             <ion-option value="2" >2222222</ion-option>
           </ion-select>
         </ion-item>-->
-        <label class="item item-input">
+
+        <label class="item item-input" data-ng-repeat="Tel in Tels">
           <span class="input-label">เบอร์โทรทัพท์</span>
-          <input type="number" name="tel" ng-model="register.address" placeholder="กรุณากรอกนามสกุล" required>
+          <input type="number" name="Tel" ng-model="Tel.data" placeholder="กรุณากรอกนามสกุล" required>
         </label>
 
+        <div class="item item-input" align="right">
+          <button class="button button-clear button-assertive" ng-click="Remove()">
+            <i class="icon ion-minus-circled "></i> ลบเบอร์
+          </button>
+          <button class="button button-clear button-balanced" ng-click="addTel()">
+            <i class="icon ion-plus-circled"></i> เพิ่มเบอร์
+          </button>
+        </div>
 
         <div class="item item-divider text-green">
           การเข้าสู่ระบบ
