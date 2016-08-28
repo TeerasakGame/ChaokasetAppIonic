@@ -88,7 +88,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('RegisterCtrl',function($scope,$compile,$state){
+.controller('RegisterCtrl',function($scope,$compile,$state,$ionicActionSheet,$cordovaCamera){
   $scope.Tels = [{id: 'tel1'}];
   $scope.addTel = function(){
     if ($scope.Tels.length < 3){
@@ -110,6 +110,68 @@ angular.module('starter.controllers', [])
 
   };
 
+  $scope.image = "img/Add_Image.png";
+  $scope.showDetail = function() {
+    $ionicActionSheet.show({
+      //titleText: 'การนำเข้ารูป',
+      buttons: [
+        { text: '<center>จากเครื่อง</center>' },
+        { text: '<center>จากกล้อง</center>' },
+      ],
+      cancelText: 'ยกเลิก',
+      cancel: function() {
+        console.log('CANCELLED');
+      },
+      buttonClicked: function(index) {
+          switch (index) {
+            case 0:
+            //  alert("111");
+              var options = {
+                    destinationType: Camera.DestinationType.FILE_URI,
+                    sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
+                    correctOrientation: true,
+                    quality: 100,
+                    allowEdit: true,
+                  }
+              $cordovaCamera.getPicture(options).then(function(imageData){
+                $scope.image = imageData;
+                //$scope.imgURI = "data:image/jped;base64," + results;
+              },function(err){
+
+              });
+              break;
+            case 1:
+                //alert("222");
+                var options = {
+                    quality: 100,
+                    destinationType: Camera.DestinationType.DATA_URL,
+                    sourceType: Camera.PictureSourceType.CAMERA,
+                    allowEdit: true,
+                    encodingType: Camera.EncodingType.JPEG,
+                    //  targetWidth: 300,
+                    //targetHeight: 400,
+                    popoverOptions: CameraPopoverOptions,
+                    saveToPhotoAlbum: true,
+                    correctOrientation:true
+                    };
+
+                $cordovaCamera.getPicture(options).then(function(imageData) {
+                var image = document.getElementById('myImage');
+                $scope.image = "data:image/jpeg;base64," + imageData;
+                }, function(err) {
+                // error
+                });
+              break;
+          }
+        console.log('BUTTON CLICKED', index);
+        return true;
+      },
+    });
+  };
+  $scope.addMember = function(){
+    console.log("addd");
+    $state.go("app.crop");
+  }
 
 })
 
