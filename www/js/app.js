@@ -44,11 +44,12 @@ angular.module('starter', ['ionic', 'starter.controllers','ngMessages','ngCordov
       controller: 'RegisterCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
+  .state('app.crop', {
+    url: '/crop',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        templateUrl: 'templates/crop.html',
+        controller: 'CropCtrl'
       }
     }
   })

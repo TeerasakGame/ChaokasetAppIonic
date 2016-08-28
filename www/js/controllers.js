@@ -52,7 +52,7 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('LoginCtrl',function($scope,$cordovaOauth,$http){
+.controller('LoginCtrl',function($scope, $cordovaOauth, $http, $state){
   //ปรพกาศตัวแปรเป็น obj เอาไว้ใส่ค่า user
   $scope.user = { username: '', password : ''};
   // ฟังก์ชั่นรับตัวแปรจาก form
@@ -60,6 +60,7 @@ angular.module('starter.controllers', [])
     //ถ้าส่งข้อมูลมาครบ
     if(form.$valid) {
       console.log('Sign-In', $scope.user.username);
+       $state.go("app.crop");
     }
   };
   $scope.LoginFacebook = function(){
@@ -72,9 +73,10 @@ angular.module('starter.controllers', [])
             var urlna = "https://graph.facebook.com/v2.7/me?fields=id%2Cname%2Cemail%2Cpicture&access_token="+token;
 
             $http.get(urlna).then(function(response) {
-                alert("API OK : "+JSON.stringify(response));
+              alert("API OK : "+JSON.stringify(response));
               //  $scope.aaa =  JSON.stringify(response);
               //  alert(response.data);
+              $state.go("app.crop");
             },function(error) {
               alert("error API : "+JSON.stringify(error));
             //  $scope.aaa = "error";
@@ -86,7 +88,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('RegisterCtrl',function($scope,$compile){
+.controller('RegisterCtrl',function($scope,$compile,$state){
   $scope.Tels = [{id: 'tel1'}];
   $scope.addTel = function(){
     if ($scope.Tels.length < 3){
@@ -109,6 +111,32 @@ angular.module('starter.controllers', [])
   };
 
 
+})
+
+.controller('CropCtrl',function($scope, $http){
+  $scope.api = [  { Name: 'แปลงสาธิต', Plant: 'ข้าว',Seed:'กข.45' },];
+  $scope.shouldShowDelete = false;
+  $scope.shouldShowReorder = false;
+  $scope.listCanSwipe = true;
+  $scope.doRefresh = function() {
+  $http.get("http://angsila.cs.buu.ac.th/~55160287/ionic_res.php").then(function(resp){
+      //alert("call ok");
+    //  $scope.api = resp.data;
+      $scope.api = [
+        { Name: 'แปลงสาธิต', Plant: 'ข้าว',Seed:'กข.45' },
+        { Name: 'แปลงสาธิต2', Plant: 'ข้าว',Seed:'หอมมะลิ' },
+      ];
+          //return data;
+    }, function(err){
+        console.error('ERR', err);
+    })
+
+    .finally(function() {
+      // Stop the ion-refresher from spinning
+      $scope.$broadcast('scroll.refreshComplete');
+    });
+  };
+  console.log('Crop');
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
