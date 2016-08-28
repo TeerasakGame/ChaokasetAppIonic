@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers','ngMessages'])
+angular.module('starter', ['ionic', 'starter.controllers','ngMessages','ngCordovaOauth'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -38,6 +38,12 @@ angular.module('starter', ['ionic', 'starter.controllers','ngMessages'])
     controller: 'LoginCtrl'
   })
 
+  .state('register', {
+      url: '/register',
+      templateUrl: 'templates/register.html',
+      controller: 'RegisterCtrl'
+  })
+
   .state('app.search', {
     url: '/search',
     views: {
@@ -47,11 +53,6 @@ angular.module('starter', ['ionic', 'starter.controllers','ngMessages'])
     }
   })
 
-  .state('register', {
-      url: '/register',
-      templateUrl: 'templates/register.html'
-  })
-  
     .state('app.playlists', {
       url: '/playlists',
       views: {

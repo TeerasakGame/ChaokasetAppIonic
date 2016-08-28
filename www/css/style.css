@@ -29,6 +29,10 @@
   color: #35BE57;
 }
 
+.text-right{
+  text-align:right;
+}
+
 label.item.has-error {
   border-bottom: 2px solid red;
 }

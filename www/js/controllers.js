@@ -52,7 +52,7 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('LoginCtrl',function($scope){
+.controller('LoginCtrl',function($scope,$cordovaOauth,$http){
   //ปรพกาศตัวแปรเป็น obj เอาไว้ใส่ค่า user
   $scope.user = { username: '', password : ''};
   // ฟังก์ชั่นรับตัวแปรจาก form
@@ -62,6 +62,53 @@ angular.module('starter.controllers', [])
       console.log('Sign-In', $scope.user.username);
     }
   };
+  $scope.LoginFacebook = function(){
+    console.log("LoginFacebook");
+    $cordovaOauth.facebook(id_Facebook, ["email","public_profile"]).then(function(result) {
+            //alert( JSON.stringify(result));
+            //alert(result.access_token);
+            var token = result.access_token;
+          //  alert(token);
+            var urlna = "https://graph.facebook.com/v2.7/me?fields=id%2Cname%2Cemail%2Cpicture&access_token="+token;
+
+            $http.get(urlna).then(function(response) {
+                alert("API OK : "+JSON.stringify(response));
+              //  $scope.aaa =  JSON.stringify(response);
+              //  alert(response.data);
+            },function(error) {
+              alert("error API : "+JSON.stringify(error));
+            //  $scope.aaa = "error";
+            });
+        }, function(error) {
+            // error
+            alert(error);
+        });
+  };
+})
+
+.controller('RegisterCtrl',function($scope,$compile){
+  $scope.Tels = [{id: 'tel1'}];
+  $scope.addTel = function(){
+    if ($scope.Tels.length < 3){
+      var newItemNo = $scope.Tels.length+1;
+      $scope.Tels.push({'id':'choice'+newItemNo});
+    }else {
+      console.log("no add");
+    }
+
+  };
+  $scope.Remove = function(){
+    if($scope.Tels.length <= 1){
+      console.log("no remove");
+    }else {
+      var newItemNo = $scope.Tels.length-1;
+      console.log("remove: "+newItemNo);
+      $scope.Tels.pop();
+    }
+
+  };
+
+
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
