@@ -171,11 +171,12 @@ angular.module('starter.controllers', [])
   $scope.addMember = function(){
     console.log("addd");
     $state.go("app.crop");
-  }
+  };
 
 })
 
-.controller('CropCtrl',function($scope, $http){
+.controller('CropCtrl',function($scope, $http, $state){
+  $scope.myVar = 'closed';
   $scope.api = [  { Name: 'แปลงสาธิต', Plant: 'ข้าว',Seed:'กข.45' },];
   $scope.shouldShowDelete = false;
   $scope.shouldShowReorder = false;
@@ -194,14 +195,23 @@ angular.module('starter.controllers', [])
     });
   };
   console.log('Crop');
+  $scope.add = function(){
+    console.log("add crop fn");
+    $state.go("app.addCrop");
+  }
 })
+
+  .controller('AddCropCtrl',function($state){
+    console.log('add crop');
+
+  })
 
  .controller('CropDetailCtrl',function($scope){
    console.log('Detail');
  })
 
  .controller('CropTimelineCtrl',function(){
-   
+
  })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
