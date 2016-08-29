@@ -83,7 +83,25 @@ angular.module('starter', ['ionic', 'starter.controllers','ngMessages','ngCordov
     }
   })
 
+  .state('app.tab.cropAccount', {
+    url: '/cropaccount',
+    views: {
+      'tab-account': {
+        templateUrl: 'templates/cropaccount.html',
+        controller: 'CropAccountCtrl'
+      }
+    }
+  })
 
+  .state('app.tab.cropProblem', {
+    url: '/cropproblem',
+    views: {
+      'tab-problem': {
+        templateUrl: 'templates/cropproblem.html',
+        controller: 'CropProblemCtrl'
+      }
+    }
+  })
 
   .state('app.tab', {
     url: '/menucropdetail',

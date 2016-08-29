@@ -192,7 +192,7 @@ angular.module('starter.controllers', [])
     }).finally(function() {
       // Stop the ion-refresher from spinning
       $scope.$broadcast('scroll.refreshComplete');
-    });
+    })
   };
   console.log('Crop');
   $scope.add = function(){
@@ -211,6 +211,14 @@ angular.module('starter.controllers', [])
  })
 
  .controller('CropTimelineCtrl',function(){
+
+ })
+
+ .controller('CropAccountCtrl',function(){
+
+ })
+
+ .controller('CropProblemCtrl',function(){
 
  })
 
