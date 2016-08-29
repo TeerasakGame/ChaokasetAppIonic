@@ -181,25 +181,28 @@ angular.module('starter.controllers', [])
   $scope.shouldShowReorder = false;
   $scope.listCanSwipe = true;
   $scope.doRefresh = function() {
-  $http.get("http://angsila.cs.buu.ac.th/~55160287/ionic_res.php").then(function(resp){
-      //alert("call ok");
-    //  $scope.api = resp.data;
-      $scope.api = [
+    $http.get("http://angsila.cs.buu.ac.th/~55160287/ionic_res.php").then(function(resp){
+    $scope.api = [
         { Name: 'แปลงสาธิต', Plant: 'ข้าว',Seed:'กข.45' },
         { Name: 'แปลงสาธิต2', Plant: 'ข้าว',Seed:'หอมมะลิ' },
       ];
-          //return data;
     }, function(err){
         console.error('ERR', err);
-    })
-
-    .finally(function() {
+    }).finally(function() {
       // Stop the ion-refresher from spinning
       $scope.$broadcast('scroll.refreshComplete');
     });
   };
   console.log('Crop');
 })
+
+ .controller('CropDetailCtrl',function($scope){
+   console.log('Detail');
+ })
+
+ .controller('CropTimelineCtrl',function(){
+   
+ })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });

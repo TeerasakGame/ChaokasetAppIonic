@@ -54,6 +54,37 @@ angular.module('starter', ['ionic', 'starter.controllers','ngMessages','ngCordov
     }
   })
 
+  .state('app.tab.cropDetail', {
+    url: '/cropdetail',
+    views: {
+      'tab-detail': {
+        templateUrl: 'templates/cropdetail.html',
+        controller: 'CropDetailCtrl'
+      }
+    }
+  })
+
+  .state('app.tab.cropTimeline', {
+    url: '/croptimeline',
+    views: {
+      'tab-timeline': {
+        templateUrl: 'templates/croptimeline.html',
+        controller: 'CropTimelineCtrl'
+      }
+    }
+  })
+
+
+
+  .state('app.tab', {
+    url: '/menucropdetail',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/menucropdetail.html',
+      }
+    }
+  })
+
     .state('app.playlists', {
       url: '/playlists',
       views: {
