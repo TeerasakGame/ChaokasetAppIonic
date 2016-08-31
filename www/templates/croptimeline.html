@@ -7,6 +7,26 @@
     <button mfb-button icon="ion-leaf" label="เพิ่มกิจกรรม"></button>
   </nav>
   <ion-content>
-    ไทม์ไลน์การเพาะปลูก
+    <section id="cd-timeline" class="cd-container">
+        <div ng-repeat="activity in timeline">
+          <div class="cd-timeline-block">
+            <div class="cd-timeline-icon positive">
+              <i class="ion-image timelineIcon" ng-if="(activity.type =='picture')"></i>
+              <i class="ion-ios-videocam timelineIcon" ng-if="activity.type =='video' "></i>
+              <i class="ion-location timelineIcon" ng-if="activity.type =='location'"></i>
+              <i class="ion-android-textsms timelineIcon" ng-if="activity.type =='text'"></i>
+            </div>
+            <!-- cd-timeline-img -->
+            <div class="cd-timeline-content positive">
+              <h3 class="marginBottom0 marginTop0">{{activity.title}}</h3>
+              <p class="marginTop5 cd-author">by {{activity.author}} on {{activity.date | date: "d MMM"}}</p>
+              <div class="item item-image marginTop5">
+                <img src="img/chaokaset_logo.png">
+              </div>
+              <p class="timelineText">{{activity.text}}</p>
+            </div>
+          </div>
+        </div>
+      </section>
   </ion-content>
 </ion-view>
