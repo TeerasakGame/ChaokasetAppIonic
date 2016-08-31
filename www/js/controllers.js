@@ -210,7 +210,7 @@ angular.module('starter.controllers', [])
    console.log('Detail');
  })
 
- .controller('CropTimelineCtrl',function($scope){
+ .controller('CropTimelineCtrl',function($scope, $state){
    $scope.timeline = [{
       date: new Date(),
       title: "การเตรียมดิน",
@@ -251,6 +251,10 @@ angular.module('starter.controllers', [])
       a:'1',
       type: "picture"
     }]
+    $scope.addActivities = function(){
+      console.log("add Act");
+      $state.go("app.addActivities");
+    };
 
  })
 
@@ -260,6 +264,12 @@ angular.module('starter.controllers', [])
 
  .controller('CropProblemCtrl',function(){
 
+ })
+
+ .controller('AddActivitiesCtrl',function($scope, $state){
+   $scope.summit = function(){
+     $state.go("app.tab.cropTimeline");
+   };
  })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {

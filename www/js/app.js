@@ -112,6 +112,16 @@ angular.module('starter', ['ionic', 'starter.controllers','ngMessages','ngCordov
     }
   })
 
+  .state('app.addActivities', {
+    url: '/addactivities',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/addactivities.html',
+        controller: 'AddActivitiesCtrl'
+      }
+    }
+  })
+
     .state('app.playlists', {
       url: '/playlists',
       views: {
