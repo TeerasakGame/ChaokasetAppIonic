@@ -91,3 +91,9 @@ label.item.valid-lr {
 .border-not {
     border-color: red;
 }
+.fixDiv{
+  /*position: fixed;*/
+  top:0px;
+  left:0px;
+  position: absolute;
+}

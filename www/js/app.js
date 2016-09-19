@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers','ngMessages','ngCordovaOauth','ngCordova','ng-mfb'])
+angular.module('starter', ['ionic', 'starter.controllers','starter.services','ngMessages','ngCordovaOauth','ngCordova','ng-mfb','MyApp.Directives'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -122,25 +122,52 @@ angular.module('starter', ['ionic', 'starter.controllers','ngMessages','ngCordov
     }
   })
 
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
-
-  .state('app.single', {
-    url: '/playlists/:playlistId',
+  .state('app.addAccount', {
+    url: '/addaccount',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/addaccount.html',
+        controller: 'AddAccountCtrl'
       }
     }
+  })
+
+  .state('app.addProblem', {
+    url: '/addproblem',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/addproblem.html',
+        controller: 'AddProblemCtrl'
+      }
+    }
+  })
+
+  .state('app.settingsTimeline', {
+    url: '/settingstimeline',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/settingtimeline.html',
+        controller: 'SettingsTimelineCtrl'
+      }
+    }
+  })
+
+  .state('logout',{
+      url: '/logout',
+      controller: 'LogoutCtrl'
+  })
+
+  .state('app.calendar', {
+      url: '/calendar',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/calendar.html',
+          controller: 'CalendarCtrl'
+        }
+      }
   });
+
   // if none of the above states are matched, use this as the fallback
+//  $urlRouterProvider.otherwise('/login');
   $urlRouterProvider.otherwise('/login');
 });

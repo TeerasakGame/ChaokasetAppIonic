@@ -20,8 +20,8 @@
         <ion-content>
       <ion-list>
         <ion-item nav-clear menu-close class="item-avatar">
-          <img src="img/ionic.png">
-          <h2><b>ชาวนา ใจดี</b></h2>
+          <img src="{{ pic }}">
+          <h2><b>{{ name }}</b></h2>
           <p>ข้อมูลส่วนตัว</p>
         </ion-item>
         <ion-item class="item-divider">
@@ -30,13 +30,13 @@
         <ion-item nav-clear menu-close href="#/app/crop" class="item-icon-left">
           <i class="icon ion-leaf"></i>จัดการแปลงเพาะปลูก
         </ion-item>
-        <ion-item nav-clear menu-close href="#" class="item-icon-left">
+        <ion-item nav-clear menu-close href="#/app/calendar" class="item-icon-left">
           <i class="icon ion-android-calendar"></i>ปฎิทินการเพาะปลูก
         </ion-item>
         <!--<ion-item nav-clear menu-close href="#/app/browse" class="item-icon-left">
           <i class="icon ion-ios-pulse-strong"></i>ไทม์ไลนการเพาะปลูก
         </ion-item>-->
-        <ion-item nav-clear menu-close href="#/login" class="item-icon-left" >
+        <ion-item nav-clear menu-close href="" class="item-icon-left" >
           <i class="icon ion-ios-people icon-detail-user"></i>สังคมชาวเกษตร
         </ion-item>
         <ion-item class="item-divider">
@@ -50,6 +50,12 @@
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/managegoodstopic" class="item-icon-left">
           <i class="icon ion-ios-compose icon-detail-user"></i>จัดการประกาศขาย
+        </ion-item>
+        <ion-item class="item-divider">
+
+        </ion-item>
+        <ion-item nav-clear menu-close class="item-icon-left" href="#/logout">
+          <i class="icon ion-ios-compose ion-log-out"></i>ออกจากระบบ
         </ion-item>
         <br><br>
 
